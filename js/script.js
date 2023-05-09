@@ -12,15 +12,20 @@
  */
 
 function myButtonClicked() {
+  document.getElementById('answer').innerHTML = "Hello, World!"
   // input
-  const lengthA = parseInt(document.getElementById('side-a').value)
-  const lengthB = parseInt(document.getElementById('side-a').value)
-  const lengthC = parseInt(document.getElementById('side-a').value)
+  const lengthA = parseFloat(document.getElementById('side-a').value)
+  const lengthB = parseFloat(document.getElementById('side-a').value)
+  const lengthC = parseFloat(document.getElementById('side-a').value)
 
   // unsing the cosin law
-  const angleA = Number (Math.acos((lengthB**2 + lengthC**2 - lengthA**2) / (2 * lengthB * lengthC)) * (180/Math.PI)).toFixed(2)
-  const angleB = Number (Math.acos((lengthC**2 + lengthA**2 - lengthB**2) / (2 * lengthC * lengthA)) * (180/Math.PI)).toFixed(2)
-  const angleC = Number (Math.acos((lengthA**2 + lengthB**2 - lengthC**2) / (2 * lengthA * lengthB)) * (180/Math.PI)).toFixed(2)
+  const angleA = Math.acos((lengthB**2 + lengthC**2 - lengthA**2) / (2 * lengthB * lengthC)) * (180/Math.PI)
+const angleB = Math.acos((lengthC**2 + lengthA**2 - lengthB**2) / (2 * lengthC * lengthA)) * (180/Math.PI)
+const angleC = Math.acos((lengthA**2 + lengthB**2 - lengthC**2) / (2 * lengthA * lengthB)) * (180/Math.PI)
+  
+  const sumOfAngles = Number((angleA).toFixed(2)) + Number((angleB).toFixed(2)) + Number((angleC).toFixed(2))
+
+  document.getElementById('answer').innerHTML = angleA + "° " + angleB + "° " + angleC + "°" + sumOfAngles + "°"
 
 
   if (sumOfAngles == 180) {
