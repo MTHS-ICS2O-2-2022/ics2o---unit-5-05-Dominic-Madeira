@@ -6,45 +6,93 @@
 
 "use strict"
 
-
 /**
  * This function uses a selection component from https://github.com/CreativeIT/getmdl-select
  */
 
 function myButtonClicked() {
-  document.getElementById('answer').innerHTML = "Hello, World!"
+  document.getElementById("answer").innerHTML = "Hello, World!"
   // input
-  const lengthA = parseFloat(document.getElementById('side-a').value)
-  const lengthB = parseFloat(document.getElementById('side-a').value)
-  const lengthC = parseFloat(document.getElementById('side-a').value)
+  const lengthA = parseFloat(document.getElementById("side-a").value)
+  const lengthB = parseFloat(document.getElementById("side-b").value)
+  const lengthC = parseFloat(document.getElementById("side-c").value)
 
   // unsing the cosin law
-  const angleA = Math.acos((lengthB**2 + lengthC**2 - lengthA**2) / (2 * lengthB * lengthC)) * (180/Math.PI)
-const angleB = Math.acos((lengthC**2 + lengthA**2 - lengthB**2) / (2 * lengthC * lengthA)) * (180/Math.PI)
-const angleC = Math.acos((lengthA**2 + lengthB**2 - lengthC**2) / (2 * lengthA * lengthB)) * (180/Math.PI)
-  
-  const sumOfAngles = Number((angleA).toFixed(2)) + Number((angleB).toFixed(2)) + Number((angleC).toFixed(2))
+  const angleA =
+    Math.acos(
+      (lengthB ** 2 + lengthC ** 2 - lengthA ** 2) / (2 * lengthB * lengthC)
+    ) *
+    (180 / Math.PI)
+  const angleB =
+    Math.acos(
+      (lengthC ** 2 + lengthA ** 2 - lengthB ** 2) / (2 * lengthC * lengthA)
+    ) *
+    (180 / Math.PI)
+  const angleC =
+    Math.acos(
+      (lengthA ** 2 + lengthB ** 2 - lengthC ** 2) / (2 * lengthA * lengthB)
+    ) *
+    (180 / Math.PI)
 
-  document.getElementById('answer').innerHTML = angleA + "° " + angleB + "° " + angleC + "°" + sumOfAngles + "°"
+  const angleAFormatted = Number(angleA.toFixed(2))
+  const angleBFormatted = Number(angleB.toFixed(2))
+  const angleCFormatted = Number(angleC.toFixed(2))
 
+  const sumOfAngles = angleAFormatted + angleBFormatted + angleCFormatted
+
+  document.getElementById("answer").innerHTML =
+    angleAFormatted +
+    "° " +
+    angleBFormatted +
+    "° " +
+    angleCFormatted +
+    "°" +
+    sumOfAngles +
+    "°" +
+    lengthA +
+    " " +
+    lengthB +
+    " " +
+    lengthC
 
   if (sumOfAngles == 180) {
-    if (angleA != angleB || angleA != angleC || angleB != angleC) {
-      if (angleA == 90 || angleB == 90 || angleC == 90) {
-        document.getElementById('answer').innerHTML = "This is an right angle triangle"
+    if (
+      angleAFormatted != angleBFormatted &&
+      angleAFormatted != angleCFormatted &&
+      angleBFormatted != angleCFormatted
+    ) {
+      if (
+        angleAFormatted == 90 ||
+        angleBFormatted == 90 ||
+        angleCFormatted == 90
+      ) {
+        document.getElementById("answer").innerHTML =
+          "This is an right angle triangle"
       } else {
-        document.getElementById('answer').innerHTML = "This is an scalene triangle"
-      } if (angleA == angleB && angleA == angleC) {
-        document.getElementById('answer').innerHTML = "This is an equilateral triangle"
-      } else {
-        if (angleA == 90 || angleB == 90 || angleC == 90) {
-          document.getElementById('answer').innerHTML = "This is an right angle triangle"
-        } else {
-          document.getElementById('answer').innerHTML = "This is an isosceles triangle"
-        }
+        document.getElementById("answer").innerHTML =
+          "This is an scalene triangle"
       }
-    } 
-  } else { 
-      document.getElementById('answer').innerHTML = "Please enter a valid triangle"
+    } else if (
+      angleAFormatted == angleBFormatted &&
+      angleAFormatted == angleCFormatted
+    ) {
+      document.getElementById("answer").innerHTML =
+        "This is an equilateral triangle"
+    } else {
+      if (
+        angleAFormatted == 90 ||
+        angleBFormatted == 90 ||
+        angleCFormatted == 90
+      ) {
+        document.getElementById("answer").innerHTML =
+          "This is an right angle triangle"
+      } else {
+        document.getElementById("answer").innerHTML =
+          "This is an isosceles triangle"
+      }
+    }
+  } else {
+    document.getElementById("answer").innerHTML =
+      "Please enter a valid triangle"
   }
 }
