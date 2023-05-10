@@ -11,7 +11,6 @@
  */
 
 function myButtonClicked() {
-  document.getElementById("answer").innerHTML = "Hello, World!"
   // input
   const lengthA = parseFloat(document.getElementById("side-a").value)
   const lengthB = parseFloat(document.getElementById("side-b").value)
@@ -39,21 +38,6 @@ function myButtonClicked() {
   const angleCFormatted = Number(angleC.toFixed(2))
 
   const sumOfAngles = angleAFormatted + angleBFormatted + angleCFormatted
-
-  document.getElementById("answer").innerHTML =
-    angleAFormatted +
-    "° " +
-    angleBFormatted +
-    "° " +
-    angleCFormatted +
-    "°" +
-    sumOfAngles +
-    "°" +
-    lengthA +
-    " " +
-    lengthB +
-    " " +
-    lengthC
 
   if (sumOfAngles == 180) {
     if (
