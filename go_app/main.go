@@ -10,50 +10,52 @@ import (
 )
 
 func main() {
-	var sideA int
-	var sideB int
-	var sideC int
+	var lengthA float64
+	var lengthB float64
+	var lengthC float64
 
 	// input
 	fmt.Println("This program finds what type of triangle you have.")
 	fmt.Println()
 	fmt.Print("Enter your first side length: ")
-	fmt.Scanln(&sideA)
+	fmt.Scanln(&lengthA)
 	fmt.Println()
 	fmt.Print("Enter your second side length: ")
-	fmt.Scanln(&sideB)
+	fmt.Scanln(&lengthB)
 	fmt.Println()
 	fmt.Print("Enter your third side length: ")
-	fmt.Scanln(&sideC)
+	fmt.Scanln(&lengthC)
 	fmt.Println()
 
 	// process
 	// cosine law
-	angleA := (sideB * sideB) + (sideC * sideC) - (sideA * sideA) / (2 * sideB * sideC) * (180 / math.Pi)
-	angleB := (sideA * sideA) + (sideC * sideC) - (sideB * sideB) / (2 * sideA * sideC) * (180 / math.Pi)
-	angleC := (sideA * sideA) + (sideB * sideB) - (sideC * sideC) / (2 * sideA * sideB) * (180 / math.Pi)
+	var angleA float64 = math.Acos((math.Pow(lengthB, 2)+math.Pow(lengthC, 2)-math.Pow(lengthA, 2))/(2*lengthB*lengthC)) * (180 / math.Pi)
+	var angleB float64 = math.Acos((math.Pow(lengthC, 2)+math.Pow(lengthA, 2)-math.Pow(lengthB, 2))/(2*lengthC*lengthA)) * (180 / math.Pi)
+	var angleC float64 = math.Acos((math.Pow(lengthA, 2)+math.Pow(lengthB, 2)-math.Pow(lengthC, 2))/(2*lengthA*lengthB)) * (180 / math.Pi)
 
-	angleAFormatted := fmt.Sprintf("%.2f", angleA)
-	angleBFormatted := fmt.Sprintf("%.2f", angleB)
-	angleCFormatted := fmt.Sprintf("%.2f", angleC)
+	var sumOfAngles float64 = angleA + angleB + angleC
+	sumOfAngles = math.Round(sumOfAngles)
 
-	sumOfAngles := angleAFormatted + angleBFormatted + angleCFormatted
+	angleA = math.Round(angleA)
+	angleB = math.Round(angleB)
+	angleC = math.Round(angleC)
 
-	if sumOfAngles == "180" {
-		if angleAFormatted != angleBFormatted && angleAFormatted != angleCFormatted && angleBFormatted != angleCFormatted {
-			if angleAFormatted == 90 || angleBFormatted == 90 || angleCFormatted == 90{
+	if sumOfAngles == 180 {
+		if angleA != angleB && angleA != angleC && angleB != angleC {
+			if angleA == 90 || angleB == 90 || angleC == 90 {
 				fmt.Println("You have a right angle triangle")
 			} else {
 				fmt.Println("You have a scalene triangle")
 			}
 		} else {
-			if angleAFormatted == angleBFormatted && angleAFormatted == angleCFormatted {
+			if angleA == angleB && angleA == angleC {
 				fmt.Println("You have an equilateral triangle")
 			} else {
-				if angleAFormatted == 90 || angleBFormatted == 90 || angleCFormatted == 90{
+				if angleA == 90 || angleB == 90 || angleC == 90 {
 					fmt.Println("You have a right angle triangle")
 				} else {
 					fmt.Println("You have an isosceles triangle")
+				}
 			}
 		}
 	} else {
