@@ -29,11 +29,11 @@ func main() {
 
 	// process
 	// cosine law
-	var angleA float64 = math.Acos((math.Pow(lengthB, 2)+math.Pow(lengthC, 2)-math.Pow(lengthA, 2))/(2*lengthB*lengthC)) * (180 / math.Pi)
-	var angleB float64 = math.Acos((math.Pow(lengthC, 2)+math.Pow(lengthA, 2)-math.Pow(lengthB, 2))/(2*lengthC*lengthA)) * (180 / math.Pi)
-	var angleC float64 = math.Acos((math.Pow(lengthA, 2)+math.Pow(lengthB, 2)-math.Pow(lengthC, 2))/(2*lengthA*lengthB)) * (180 / math.Pi)
+	angleA := math.Acos((math.Pow(lengthB, 2)+math.Pow(lengthC, 2)-math.Pow(lengthA, 2))/(2*lengthB*lengthC)) * (180 / math.Pi)
+	angleB := math.Acos((math.Pow(lengthC, 2)+math.Pow(lengthA, 2)-math.Pow(lengthB, 2))/(2*lengthC*lengthA)) * (180 / math.Pi)
+	angleC := math.Acos((math.Pow(lengthA, 2)+math.Pow(lengthB, 2)-math.Pow(lengthC, 2))/(2*lengthA*lengthB)) * (180 / math.Pi)
 
-	var sumOfAngles float64 = angleA + angleB + angleC
+	sumOfAngles := angleA + angleB + angleC
 	sumOfAngles = math.Round(sumOfAngles)
 
 	angleA = math.Round(angleA)
