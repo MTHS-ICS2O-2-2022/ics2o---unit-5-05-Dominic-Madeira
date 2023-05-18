@@ -48,7 +48,7 @@ func main() {
 				fmt.Println("You have a scalene triangle")
 			}
 		} else {
-			if angleA == angleB && angleA == angleC {
+			if angleA == angleB && angleA == angleC && angleB == angleC {
 				fmt.Println("You have an equilateral triangle")
 			} else {
 				if angleA == 90 || angleB == 90 || angleC == 90 {
